@@ -10,19 +10,6 @@
 </p>
 
 
-
-
-
-<h1 align="center">🛡️ Fortaleza MJ</h1>
-<p align="center">
-  <em><strong>Blindaje espiritual y técnico</strong> para proteger tu sitio de <strong>Misión Juvenil</strong> y otros ministerios digitales cristianos.</em>
-</p>
-<p align="center">
-  ✨ Hecho con fe, código limpio y propósito eterno.
-</p>
-
----
-
 🎯 **Misión del plugin**
 > *"Vestíos de toda la armadura de Dios, para que podáis estar firmes contra las asechanzas del diablo."*  
 > — Efesios 6:11
