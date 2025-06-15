@@ -1,0 +1,20 @@
+name: Validar PHP
+on: [push, pull_request]
+
+jobs:
+  phplint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Instalar PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.4'
+          extensions: mbstring, intl, dom
+
+      - name: Validar sintaxis PHP
+        run: |
+          echo "Iniciando validación de archivos PHP..."
+          find . -type f -name "*.php" -print0 | xargs -0 -n1 php -l
+          echo "✅ Validación completada: sin errores de sintaxis."
