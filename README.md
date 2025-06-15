@@ -1,3 +1,18 @@
+
+<h1 align="center">🛡️ Fortaleza MJ</h1>
+<p align="center"><em>Blindaje espiritual y técnico para proteger sitios WordPress del Reino de Dios</em></p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/WordPress-Compatible-blue?logo=wordpress&style=flat-square" />
+  <img src="https://img.shields.io/badge/PHP-7.4+-777bb4?logo=php&style=flat-square" />
+  <img src="https://img.shields.io/badge/Security-Focused-critical?style=flat-square&logo=shield" />
+  <img src="https://img.shields.io/badge/License-MIT-blue?style=flat-square" />
+</p>
+
+
+
+
+
 <h1 align="center">🛡️ Fortaleza MJ</h1>
 <p align="center">
   <em><strong>Blindaje espiritual y técnico</strong> para proteger tu sitio de <strong>Misión Juvenil</strong> y otros ministerios digitales cristianos.</em>
