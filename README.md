@@ -41,7 +41,7 @@ Este plugin protege tu sitio contra accesos indebidos a través de la API REST y
 1. Descarga o clona el plugin en `wp-content/plugins/wp-api-protection/`
 2. Actívalo desde el panel de administración
 3. Verifica que los intentos fallidos se bloquean como se espera
-4. Personaliza los mensajes desde el archivo `functions.php` o donde indiques los hooks
+4. Personaliza los mensajes desde el archivo `fortaleza-mj.php` o donde indiques los hooks
 
 ---
 
