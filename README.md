@@ -1,59 +1,68 @@
-<!-- Encabezado animado con SVG estilo máquina de escribir -->
-<p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&center=true&vCenter=true&width=435&lines=%F0%9F%9B%A1%EF%B8%8F+Fortaleza+MJ;Protege+tu+sitio+WordPress+con+fe+y+seguridad" alt="Typing SVG" />
-</p>
+# 🛡️ WP API Protection — Seguridad con propósito
 
-<p align="center"><em>Blindaje espiritual y técnico para proteger sitios WordPress del Reino de Dios</em></p>
+**WP API Protection** es un plugin diseñado para proteger los accesos a la API REST de WordPress, limitando intentos fallidos y mostrando mensajes personalizados con inspiración bíblica.
 
-<p align="center">
-  <img src="https://img.shields.io/badge/WordPress-Compatible-blue?logo=wordpress&style=flat-square" />
-  <img src="https://img.shields.io/badge/PHP-7.4%2B-777bb4?logo=php&style=flat-square" />
-  <img src="https://img.shields.io/badge/Security-Focused-critical?style=flat-square&logo=shield" />
-  <img src="https://img.shields.io/badge/License-MIT-blue?style=flat-square" />
-</p>
+Aunque fue creado pensando en iglesias, ministerios cristianos y sitios con valores espirituales, **puede ser utilizado libremente por cualquier sitio WordPress** que desee una protección distinta, con un enfoque reflexivo.
 
 ---
 
-## 🎯 Misión del plugin
+## ✨ ¿Para qué sirve?
 
-> *"Vestíos de toda la armadura de Dios, para que podáis estar firmes contra las asechanzas del diablo."*  
-> — Efesios 6:11
+Este plugin protege tu sitio contra accesos indebidos a través de la API REST y del sistema de login. Al detectar intentos fallidos repetidos, ejecuta medidas como:
 
-Este plugin fusiona principios de ciberseguridad con verdades bíblicas para proteger sitios WordPress enfocados en el Reino de Dios.  
-Al detectar intentos maliciosos, responde con mensajes llenos de luz… y advertencias celestiales. ☁️⚔️
-
----
-
-## ⚙️ Características Principales
-
-✅ Protección REST API con mensajes bíblicos  
-✅ Oculta endpoints de usuarios y autores  
-✅ Bloquea XML-RPC  
-✅ Limpieza de cabeceras sensibles  
-✅ Limita peticiones por IP  
-✅ Redirecciona intentos de enumeración  
-✅ Oculta la versión de WordPress  
-✅ Compatible con temas personalizados
+- ❗ **Bloqueo temporal de la IP** que realizó los intentos fallidos
+- 📖 Mensajes con versículos bíblicos que invitan a la introspección
+- 🧊 Desactivación visual del formulario de login con estilo sobrio
+- 🔒 Compatibilidad con JWT Authentication y proyectos headless (React, Vue, Flutter, etc.)
 
 ---
 
-## 📜 Tabla de Contenido
+## 🧩 ¿A quién va dirigido?
 
-- [📦 Instalación](#-instalación)
-- [🔐 Seguridad Espiritual](#-seguridad-espiritual)
-- [🧠 Lógica de Defensa](#-lógica-de-defensa)
-- [📘 Mensajes Bíblicos](#-mensajes-bíblicos)
-- [💡 Créditos y Visión](#-créditos-y-visión)
+- Iglesias, ministerios y movimientos cristianos que usan WordPress
+- Proyectos espirituales que deseen proteger su backend de forma simbólica
+- Usuarios comunes que quieren añadir un toque de reflexión a la seguridad
+
+> **Nota:** El plugin es gratuito y de código abierto. Si no perteneces a una congregación, también puedes usarlo libremente. Se permite modificar los mensajes, estilos y textos según tu visión.
+
+---
+
+## 🔧 Características clave
+
+- Protección automática tras varios intentos incorrectos
+- **Bloqueo de IP** y ocultamiento del formulario de login
+- Mensajes espirituales basados en versículos (como Mateo 25:13 o Juan 12:36)
+- Estilo minimalista compatible con cualquier tema WordPress
 
 ---
 
 ## 📦 Instalación
 
-```bash
-# 1. Clona este repositorio o descárgalo como .zip
-git clone https://github.com/kevorteg/wp-api-protection.git
+1. Descarga o clona el plugin en `wp-content/plugins/wp-api-protection/`
+2. Actívalo desde el panel de administración
+3. Verifica que los intentos fallidos se bloquean como se espera
+4. Personaliza los mensajes desde el archivo `functions.php` o donde indiques los hooks
 
-# 2. Copia la carpeta dentro de tu WordPress
-/wp-content/plugins/fortaleza-mj/
+---
 
-# 3. Activa el plugin desde el panel de WordPress
+## 🛠️ Personalización
+
+- Cambia los versículos o mensajes directamente en el código
+- Puedes agregar más condiciones o adaptar el estilo visual
+- Ideal para sitios donde la estética y la reflexión van de la mano
+
+---
+
+## 🤝 Contribuye
+
+Este proyecto está hecho para servir al Reino. Si puedes mejorarlo, tradúcelo o ampliarlo, ¡hazlo libremente! Y si te bendice, compártelo con otros.
+
+---
+
+## 🙏 Final
+
+> “Todo lo que hagas, hazlo de corazón, como para el Señor.”  
+> — *Colosenses 3:23*
+
+Gracias por usar este plugin. Que tu seguridad digital sea también un eco de tu seguridad espiritual.  
+— *Kevin & Aurora Celestial*
