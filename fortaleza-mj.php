@@ -3,7 +3,7 @@
 Plugin Name: Fortaleza MJ
 Description: Blindaje espiritual y técnico para proteger el sitio de Misión Juvenil contra intrusos digitales.
 Version: 1.0
-Author: Kevin Ortega y Aurora Celestial
+Author: Kevin Ortega
 */
 
 // 🛡️ Cabeceras de seguridad
