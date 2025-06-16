@@ -13,8 +13,6 @@ Este plugin protege tu sitio contra accesos indebidos a través de la API REST y
 - ❗ **Bloqueo temporal de la IP** que realizó los intentos fallidos
 - 📖 Mensajes con versículos bíblicos que invitan a la introspección
 - 🧊 Desactivación visual del formulario de login con estilo sobrio
-- 🔒 Compatibilidad con JWT Authentication y proyectos headless (React, Vue, Flutter, etc.)
-
 ---
 
 ## 🧩 ¿A quién va dirigido?
@@ -57,12 +55,3 @@ Este plugin protege tu sitio contra accesos indebidos a través de la API REST y
 
 Este proyecto está hecho para servir al Reino. Si puedes mejorarlo, tradúcelo o ampliarlo, ¡hazlo libremente! Y si te bendice, compártelo con otros.
 
----
-
-## 🙏 Final
-
-> “Todo lo que hagas, hazlo de corazón, como para el Señor.”  
-> — *Colosenses 3:23*
-
-Gracias por usar este plugin. Que tu seguridad digital sea también un eco de tu seguridad espiritual.  
-— *Kevin & Aurora Celestial*
