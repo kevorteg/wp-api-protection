@@ -54,4 +54,5 @@
 This project is open source. Feel free to submit Pull Requests or open Issues on GitHub.
 
 **License:** GPLv3  
-**Authors:** Kevin Ortega & Misión Juvenil
+**Authors:** Kevin Ortega
+
