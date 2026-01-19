@@ -1,0 +1,19 @@
+# OS junk
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
+
+# Node/Build
+node_modules/
+dist/
+
+# Archives
+*.zip
+*.rar
+*.tar.gz
+
+# Logs
+debug.log
+error_log

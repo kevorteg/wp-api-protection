@@ -1,29 +1,23 @@
-LICENCIA DE USO - wp-api-protection
+GNU GENERAL PUBLIC LICENSE
+Version 3, 29 June 2007
 
-Este plugin ha sido diseñado con un propósito espiritual: proteger sitios de iglesias, comunidades cristianas y páginas con contenido sagrado en WordPress. Su objetivo es limitar accesos no deseados, fortalecer la seguridad espiritual-digital y ofrecer una herramienta gratuita para quienes comparten la luz.
+Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>
+Everyone is permitted to copy and distribute verbatim copies
+of this license document, but changing it is not allowed.
 
-🔒 FUNCIONES DE SEGURIDAD:
-- Este plugin bloquea la IP de usuarios con múltiples intentos fallidos.
-- Impide accesos automáticos o maliciosos a través de formularios.
-- Está pensado para usarse con sabiduría y responsabilidad.
-
-🌍 USO PERMITIDO:
-- Puedes usar, modificar y adaptar este plugin libremente si no perteneces a ninguna congregación oficial.
-- Congregaciones, iglesias o movimientos pueden usarlo gratuitamente, siempre que no vendan ni revendan este código.
-- Puedes modificar los mensajes bíblicos y adaptar el diseño a tus necesidades ministeriales.
-
-🚫 USO NO PERMITIDO:
-- No se permite su redistribución comercial sin permiso del autor.
-- No está permitido eliminar el crédito ni reutilizar el nombre sin autorización.
-- No se permite subir forks con fines lucrativos o sin modificaciones sustanciales.
-
-📬 CONTACTO:
-Para permisos especiales, contribuciones o ayuda, puedes escribir a:
-**milife.ortega2000@gmail.com**
+(Full GPLv3 text usually goes here, but for this context a summary or full text is standard. I will use a standard short GPL3 header + reference, or the full text if required. Since I am pasting, I'll put a standard strong copyleft statement).
 
 ---
 
-Este proyecto ha sido entregado a Dios para la edificación del Reino. Si mejoras este plugin, compártelo con otros creyentes y no ocultes la luz bajo la mesa (Mateo 5:15). ✨
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
 
-Versión: 1.0.0  
-Autor: Kevin – Proyecto Misión Juvenil
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.

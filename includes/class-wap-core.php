@@ -64,11 +64,25 @@ class WaP_Core
         $protection = new WaP_Protection();
         add_filter('rest_authentication_errors', array($protection, 'check_access_rules'), 5);
 
-        // Block Author Enumeration
-        add_action('template_redirect', array($protection, 'block_author_scanning'));
+        // Block Author Enumeration (Priority 1 to run before WP Canonical Redirects)
+        add_action('template_redirect', array($protection, 'block_author_scanning'), 1);
 
-        // Hide WordPress Version
+        // Hide WordPress Version (Generator meta)
         add_filter('the_generator', '__return_empty_string');
+
+        // Hide WordPress Version (Scripts & Styles)
+        add_filter('style_loader_src', array($this, 'remove_wp_version_strings'), 10, 2);
+        add_filter('script_loader_src', array($this, 'remove_wp_version_strings'), 10, 2);
+    }
+
+    /**
+     * Removes the ?ver=X.X.X string from URLs.
+     */
+    public function remove_wp_version_strings($src)
+    {
+        if (strpos($src, 'ver=' . get_bloginfo('version')))
+            $src = remove_query_arg('ver', $src);
+        return $src;
     }
 
     /**
