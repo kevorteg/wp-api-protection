@@ -31,6 +31,12 @@ class WaP_Protection
         // If "Private Site" mode is enabled, reject everyone else.
         $hard_block = get_option('wap_hard_block_enabled', false);
         if ($hard_block) {
+
+            // TROLL MODE CHECK (Added Fix)
+            if (get_option('wap_troll_mode_enabled', false)) {
+                $this->serve_troll_response();
+            }
+
             return new WP_Error(
                 'wap_restricted_access',
                 __('API Access Restricted to Whitelisted IPs and Admins.', 'wp-api-protection'),
