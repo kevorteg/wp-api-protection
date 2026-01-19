@@ -142,6 +142,16 @@ if (!defined('ABSPATH'))
                     </div>
 
                     <div class="wap-form-group">
+                        <label>PsyOps / Troll Mode</label>
+                        <label style="font-weight: normal; color: #d63638;">
+                            <input type="checkbox" name="wap_troll_mode_enabled" value="1" <?php checked(1, get_option('wap_troll_mode_enabled'), true); ?>>
+                            <strong>Enable Troll Mode</strong> (Experimental)
+                        </label>
+                        <p class="description">If enabled, blocked users will see a "Hacked" screen (Browsers) or ASCII
+                            Art (Terminal). Fun, but use with caution.</p>
+                    </div>
+
+                    <div class="wap-form-group">
                         <label for="wap_whitelist">Whitelist IPs (One per line)</label>
                         <textarea id="wap_whitelist" name="wap_whitelist_ips"
                             rows="5"><?php echo esc_textarea(get_option('wap_whitelist_ips')); ?></textarea>

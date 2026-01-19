@@ -56,6 +56,9 @@ class WaP_Protection
     /**
      * Blocks user enumeration via ?author=N or /author/name archives.
      */
+    /**
+     * Blocks user enumeration via ?author=N or /author/name archives.
+     */
     public function block_author_scanning()
     {
         // Allow admins to see authors
@@ -65,8 +68,69 @@ class WaP_Protection
 
         // Check if viewing an author archive or using the author query var
         if (is_author() || isset($_GET['author'])) {
+
+            // Check for Troll Mode
+            if (get_option('wap_troll_mode_enabled', false)) {
+                $this->serve_troll_response();
+            }
+
             wp_redirect(home_url());
             exit;
+        }
+    }
+
+    /**
+     * Identifies if the request comes from a CLI tool (curl, wget, etc).
+     */
+    private function is_cli_request()
+    {
+        $ua = isset($_SERVER['HTTP_USER_AGENT']) ? strtolower($_SERVER['HTTP_USER_AGENT']) : '';
+        $cli_tools = array('curl', 'wget', 'python', 'nmap', 'sqlmap', 'nikto', 'gobuster');
+
+        foreach ($cli_tools as $tool) {
+            if (strpos($ua, $tool) !== false) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Serves the prank response based on client type.
+     */
+    public function serve_troll_response()
+    {
+        if ($this->is_cli_request()) {
+            // CLI Response
+            header('X-Hacker-Rank: Noob');
+            header('X-Trolled-By: WP API Protection');
+            header('Content-Type: text/plain');
+
+            echo "\n";
+            echo "   /\\_/\\  \n";
+            echo "  ( o.o ) \n";
+            echo "   > ^ <  \n";
+            echo "  HACKER DETECTADO!\n\n";
+            echo "  Buen intento, pero hoy no.\n";
+            echo "  Intenta hackear a tu abuela mejor.\n\n";
+            die();
+        } else {
+            // Browser Response (Mr. Robot Style)
+            $ip = $_SERVER['REMOTE_ADDR'];
+
+            echo '<!DOCTYPE html><html><head><title>INTRUSION DETECTED</title>';
+            echo '<style>body{background:#000;color:#0f0;font-family:monospace;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;overflow:hidden;}';
+            echo '.term{width:80%;max-width:800px;} h1{color:red;font-size:3em;animation:blink 1s infinite;}';
+            echo '@keyframes blink{50%{opacity:0;}}</style>';
+            echo '</head><body><div class="term">';
+            echo '<h1>⚠️ INTRUSION DETECTED ⚠️</h1>';
+            echo "<p>> TRACING SOURCE IP... [DONE]</p>";
+            echo "<p>> TARGET IDENTIFIED: <strong style='color:red;font-size:1.5em;'>$ip</strong></p>";
+            echo "<p>> UPLOADING LOGS TO INTERPOL CYBERCRIME UNIT...</p>";
+            echo "<p id='upload'>[||||||||||-----] 78%</p>";
+            echo "<script>setInterval(function(){ document.getElementById('upload').innerText = '[|||||||||||||||] 100% - UPLOAD COMPLETE'; }, 2000);</script>";
+            echo '</div></body></html>';
+            die();
         }
     }
 }

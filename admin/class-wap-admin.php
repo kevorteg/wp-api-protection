@@ -26,6 +26,7 @@ class WaP_Admin
         register_setting('wap_options_group', 'wap_whitelist_ips');
         register_setting('wap_options_group', 'wap_rate_limit_max');
         register_setting('wap_options_group', 'wap_hard_block_enabled');
+        register_setting('wap_options_group', 'wap_troll_mode_enabled');
         register_setting('wap_options_group', 'wap_custom_messages');
     }
 

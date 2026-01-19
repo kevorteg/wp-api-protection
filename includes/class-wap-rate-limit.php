@@ -43,6 +43,14 @@ class WaP_Rate_Limit
             // Delete counter so it starts fresh after lock expires
             delete_transient($transient_count_key);
 
+            // Troll Mode Check
+            if (get_option('wap_troll_mode_enabled', false)) {
+                if (class_exists('WaP_Protection')) {
+                    $protector = new WaP_Protection();
+                    $protector->serve_troll_response();
+                }
+            }
+
             return new WP_Error(
                 'wap_rate_limit_final',
                 $this->get_biblical_message('final_block'),
