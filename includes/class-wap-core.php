@@ -33,6 +33,7 @@ class WaP_Core
         // Protection Logic (The Guard)
         require_once WAP_PLUGIN_DIR . 'includes/class-wap-protection.php';
         require_once WAP_PLUGIN_DIR . 'includes/class-wap-rate-limit.php';
+        require_once WAP_PLUGIN_DIR . 'includes/class-wap-logger.php';
 
         // Admin Interface
         if (is_admin()) {

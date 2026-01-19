@@ -43,6 +43,11 @@ class WaP_Rate_Limit
             // Delete counter so it starts fresh after lock expires
             delete_transient($transient_count_key);
 
+            // Log the block
+            if (class_exists('WaP_Logger')) {
+                WaP_Logger::log($_SERVER['REMOTE_ADDR'], 'Rate Limit', 'Exceeded ' . $limit . ' attempts');
+            }
+
             // Troll Mode Check
             if (get_option('wap_troll_mode_enabled', false)) {
                 if (class_exists('WaP_Protection')) {

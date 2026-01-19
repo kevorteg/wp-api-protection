@@ -32,6 +32,11 @@ class WaP_Protection
         $hard_block = get_option('wap_hard_block_enabled', false);
         if ($hard_block) {
 
+            // Log the block
+            if (class_exists('WaP_Logger')) {
+                WaP_Logger::log($_SERVER['REMOTE_ADDR'], 'Hard Block', 'Private Site Mode Active');
+            }
+
             // TROLL MODE CHECK (Added Fix)
             if (get_option('wap_troll_mode_enabled', false)) {
                 $this->serve_troll_response();
