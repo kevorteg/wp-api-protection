@@ -220,6 +220,23 @@ if (!$hard_block) {
                         </div>
                     </div>
 
+                    <!-- New Geo-Block & Alerts Card -->
+                    <div class="wap-card" style="border-top: 4px solid #dba617;">
+                        <h2>🌍 Geo-Blocking & Alerts</h2>
+                        <div class="wap-form-group">
+                            <label>Blocked Countries (Codes)</label>
+                            <input type="text" name="wap_blocked_countries" placeholder="RU, CN, KP"
+                                value="<?php echo esc_attr(get_option('wap_blocked_countries')); ?>">
+                            <p class="description">Comma separated 2-letter codes. Uses free API cache.</p>
+                        </div>
+                        <div class="wap-form-group">
+                            <label>Email Alert Threshold</label>
+                            <input type="number" name="wap_alert_threshold" style="width: 80px;"
+                                value="<?php echo esc_attr(get_option('wap_alert_threshold', 20)); ?>">
+                            <span class="description"> blocks in 5 mins trigger an email.</span>
+                        </div>
+                    </div>
+
                     <div class="wap-card">
                         <h2>📜 Custom Messages (Biblical)</h2>
                         <?php

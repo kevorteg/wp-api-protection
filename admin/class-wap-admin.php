@@ -28,6 +28,8 @@ class WaP_Admin
         register_setting('wap_options_group', 'wap_hard_block_enabled');
         register_setting('wap_options_group', 'wap_troll_mode_enabled');
         register_setting('wap_options_group', 'wap_custom_messages');
+        register_setting('wap_options_group', 'wap_blocked_countries');
+        register_setting('wap_options_group', 'wap_alert_threshold');
     }
 
     public function enqueue_styles()
