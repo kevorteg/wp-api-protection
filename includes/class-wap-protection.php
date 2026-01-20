@@ -106,24 +106,23 @@ class WaP_Protection
         return false;
     }
 
-    /**
-     * Serves the prank response based on client type.
-     */
-    /**
-     * Serves the prank response based on client type.
-     */
-    public function serve_troll_response()
-    {
+
     /**
      * Helper to guess OS from User Agent
      */
-    private function get_client_os() {
+    private function get_client_os()
+    {
         $ua = $_SERVER['HTTP_USER_AGENT'];
-        if (strpos($ua, 'Windows') !== false) return 'Windows (Target: Soft)';
-        if (strpos($ua, 'Mac') !== false) return 'macOS (Rich Target)';
-        if (strpos($ua, 'Linux') !== false) return 'Linux (Hacker OS?)';
-        if (strpos($ua, 'Android') !== false) return 'Android';
-        if (strpos($ua, 'iPhone') !== false) return 'iOS';
+        if (strpos($ua, 'Windows') !== false)
+            return 'Windows (Target: Soft)';
+        if (strpos($ua, 'Mac') !== false)
+            return 'macOS (Rich Target)';
+        if (strpos($ua, 'Linux') !== false)
+            return 'Linux (Hacker OS?)';
+        if (strpos($ua, 'Android') !== false)
+            return 'Android';
+        if (strpos($ua, 'iPhone') !== false)
+            return 'iOS';
         return 'Unknown OS (Ghost System)';
     }
 
@@ -137,8 +136,9 @@ class WaP_Protection
             }
             @ini_set('output_buffering', 'off');
             @ini_set('zlib.output_compression', false);
-            while (ob_get_level()) ob_end_clean();
-            
+            while (ob_get_level())
+                ob_end_clean();
+
             header('X-Hacker-Rank: Noob');
             header('X-Trolled-By: WP API Protection');
             header('Content-Type: text/plain; charset=utf-8');
