@@ -48,6 +48,12 @@
 | **Rate Limit** | Max attempts before temp block. | `5` |
 
 ---
+# 🛡️ WP API Protection
+
+[![Download Zip](https://img.shields.io/badge/Download-v1.0-blue?style=for-the-badge&logo=wordpress)](https://github.com/kevorteg/wp-api-protection/releases/tag/v1.0.0)
+
+**Un plugin de seguridad ligero para blindar la REST API de WordPress.**
+...
 
 ## 🤝 Contributing
 
@@ -55,4 +61,7 @@ This project is open source. Feel free to submit Pull Requests or open Issues on
 
 **License:** GPLv3  
 **Authors:** Kevin Ortega
+
+
+
 
