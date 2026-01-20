@@ -282,15 +282,15 @@ if (!$hard_block) {
                 $logs = WaP_Logger::get_logs();
                 if ($logs) {
                     echo '<table class="wap-log-table">';
-                    echo '<thead><tr><th>Time</th><th>IP</th><th>Type</th><th>Reason</th><th>Client</th></tr></thead>';
+                    echo '<thead><tr><th>Time</th><th>IP</th><th>Type</th><th>Target URL</th><th>Reason</th></tr></thead>';
                     echo '<tbody>';
                     foreach ($logs as $log) {
                         echo '<tr>';
                         echo '<td>' . $log->time . '</td>';
-                        echo '<td>' . $log->ip . '</td>';
-                        echo '<td><span style="color:red; font-weight:bold;">' . $log->type . '</span></td>';
+                        echo '<td><strong style="color: #d63638;">' . $log->ip . '</strong></td>';
+                        echo '<td>' . $log->type . '</td>';
+                        echo '<td><code>' . (isset($log->request_url) ? $log->request_url : 'N/A') . '</code></td>';
                         echo '<td>' . $log->reason . '</td>';
-                        echo '<td>' . $log->request_type . '</td>';
                         echo '</tr>';
                     }
                     echo '</tbody></table>';

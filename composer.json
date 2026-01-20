@@ -1,0 +1,23 @@
+{
+    "name": "kevorteg/wp-api-protection",
+    "description": "Security Suite for WordPress REST API (Anti-Reconnaissance & Hardening).",
+    "type": "wordpress-plugin",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Kevin Ortega",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "composer/installers": "^1.0 || ^2.0"
+    },
+    "keywords": [
+        "wordpress",
+        "security",
+        "rest-api",
+        "hardening",
+        "firewall"
+    ]
+}
