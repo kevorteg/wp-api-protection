@@ -32,6 +32,12 @@
 
 ## 🚀 Installation
 
+### Option 1: Composer (Recommended)
+```bash
+composer require kevorteg/wp-api-protection
+```
+
+### Option 2: Manual Zip
 1. Download the latest release (`wp-api-protection.zip`).
 2. Upload to your WordPress via **Plugins > Add New > Upload**.
 3. Activate the plugin.

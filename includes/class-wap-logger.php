@@ -96,4 +96,14 @@ class WaP_Logger
         }
         return 'Browser';
     }
+
+    /**
+     * Retrieves recent logs.
+     */
+    public static function get_logs($limit = 50)
+    {
+        self::init();
+        global $wpdb;
+        return $wpdb->get_results("SELECT * FROM " . self::$table_name . " ORDER BY id DESC LIMIT $limit");
+    }
 }
