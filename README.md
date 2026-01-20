@@ -61,7 +61,3 @@ This project is open source. Feel free to submit Pull Requests or open Issues on
 
 **License:** GPLv3  
 **Authors:** Kevin Ortega
-
-
-
-
