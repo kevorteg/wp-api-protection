@@ -114,20 +114,81 @@ class WaP_Protection
      */
     public function serve_troll_response()
     {
+    /**
+     * Helper to guess OS from User Agent
+     */
+    private function get_client_os() {
+        $ua = $_SERVER['HTTP_USER_AGENT'];
+        if (strpos($ua, 'Windows') !== false) return 'Windows (Target: Soft)';
+        if (strpos($ua, 'Mac') !== false) return 'macOS (Rich Target)';
+        if (strpos($ua, 'Linux') !== false) return 'Linux (Hacker OS?)';
+        if (strpos($ua, 'Android') !== false) return 'Android';
+        if (strpos($ua, 'iPhone') !== false) return 'iOS';
+        return 'Unknown OS (Ghost System)';
+    }
+
+    public function serve_troll_response()
+    {
         if ($this->is_cli_request()) {
             // CLI Response
+            // Disable buffering to allow "streaming" effect (Typewriter)
+            if (function_exists('apache_setenv')) {
+                @apache_setenv('no-gzip', 1);
+            }
+            @ini_set('output_buffering', 'off');
+            @ini_set('zlib.output_compression', false);
+            while (ob_get_level()) ob_end_clean();
+            
             header('X-Hacker-Rank: Noob');
             header('X-Trolled-By: WP API Protection');
             header('Content-Type: text/plain; charset=utf-8');
 
-            echo "\n";
-            echo "   /\\_/\\  \n";
-            echo "  ( o.o ) \n";
-            echo "   > ^ <  \n";
-            echo "  HACKER DETECTADO!\n\n";
-            echo "  Buen intento, pero hoy no.\n";
-            echo "  Intenta hackear a tu abuela mejor.\n\n";
+            $ip = $_SERVER['REMOTE_ADDR'];
+            $os = $this->get_client_os();
+            $country = get_transient('wap_geo_' . md5($ip)) ?: 'Unknown Location';
+            $port = $_SERVER['REMOTE_PORT'];
+
+            $lines = [
+                "\n",
+                " > INITIATING COUNTER-INTELLIGENCE SCAN...",
+                " > [|||||     ] 33%",
+                " > [||||||||| ] 89%",
+                " > [||||||||||] 100% [COMPLETE]",
+                "\n",
+                " ------------------------------------------------",
+                "  🛑 INTRUSION ATTEMPT BLOCKED - NOOB DETECTED 🛑",
+                " ------------------------------------------------",
+                "\n",
+                " > TARGET TELEMETRY:",
+                "   [+] IP ADDRESS : " . $ip,
+                "   [+] ORIGIN     : " . $country,
+                "   [+] OS SYSTEM  : " . $os,
+                "   [+] SOURCE PORT: " . $port,
+                "   [+] PROTOCOL   : " . $_SERVER['SERVER_PROTOCOL'],
+                "\n",
+                " > ANALYSIS:",
+                "   Your attempt has been logged in our neural network.",
+                "   Interpol Cyber-Division has been notified.",
+                "\n",
+                " > ADVICE:",
+                "   Disconnect immediately.",
+                "   Throw your computer into the river.",
+                "   Run.",
+                "\n",
+                "   /\\_/\\  ",
+                "  ( o.o ) ",
+                "   > ^ <  ",
+                "   Bye Bye.",
+                "\n"
+            ];
+
+            foreach ($lines as $line) {
+                echo $line . "\n";
+                flush();
+                usleep(150000); // 150ms delay per line for typewriter effect
+            }
             die();
+
         } else {
             // Browser Response (Randomized PsyOps)
             $ip = $_SERVER['REMOTE_ADDR'];
@@ -139,71 +200,173 @@ class WaP_Protection
             if (rand(0, 1) === 0) {
                 // THEME 1: DIVINE MIRROR (El Espejo Divino)
                 ?>
-                                <!DOCTYPE html>
-                                <html>
-                                <head>
-                                    <title>👁️ NADA ESTÁ OCULTO</title>
-                                    <style>
-                                        body { background-color: #0d0d0d; color: #c0c0c0; font-family: 'Georgia', serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; text-align: center; }
-                                        .container { max-width: 600px; padding: 40px; border: 1px solid #333; box-shadow: 0 0 50px rgba(255, 255, 255, 0.05); }
-                                        h1 { font-size: 2.5em; color: #fff; letter-spacing: 5px; margin-bottom: 20px; text-transform: uppercase; }
-                                        p { font-size: 1.1em; line-height: 1.6; color: #888; }
-                                        .data-table { margin-top: 30px; text-align: left; background: #111; padding: 20px; border-left: 3px solid #666; font-family: 'Courier New', monospace; }
-                                        .label { color: #555; font-weight: bold; }
-                                        .value { color: #ddd; }
-                                    </style>
-                                </head>
-                                <body>
-                                    <div class="container">
-                                        <h1>El Espejo Divino</h1>
-                                        <p>"Porque no hay nada oculto que no haya de ser manifestado; ni escondido, que no haya de salir a luz." (Marcos 4:22)</p>
-                                        <p>Tu intento ha sido registrado. Tu identidad es conocida.</p>
-                        
-                                        <div class="data-table">
-                                            <div><span class="label">IP Detectada:</span> <span class="value"><?php echo esc_html($ip); ?></span></div>
-                                            <div><span class="label">Ubicación:</span> <span class="value"><?php echo esc_html($country); ?></span></div>
-                                            <div><span class="label">User-Agent:</span> <span class="value"><?php echo esc_html(substr($ua, 0, 50)) . '...'; ?></span></div>
-                                            <div><span class="label">Estado:</span> <span class="value" style="color: #ff4444;">REGISTRADO</span></div>
-                                        </div>
-                                    </div>
-                                </body>
-                                </html>
-                                <?php
+                <!DOCTYPE html>
+                <html>
+
+                <head>
+                    <title>👁️ NADA ESTÁ OCULTO</title>
+                    <style>
+                        body {
+                            background-color: #0d0d0d;
+                            color: #c0c0c0;
+                            font-family: 'Georgia', serif;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            height: 100vh;
+                            margin: 0;
+                            text-align: center;
+                        }
+
+                        .container {
+                            max-width: 600px;
+                            padding: 40px;
+                            border: 1px solid #333;
+                            box-shadow: 0 0 50px rgba(255, 255, 255, 0.05);
+                        }
+
+                        h1 {
+                            font-size: 2.5em;
+                            color: #fff;
+                            letter-spacing: 5px;
+                            margin-bottom: 20px;
+                            text-transform: uppercase;
+                        }
+
+                        p {
+                            font-size: 1.1em;
+                            line-height: 1.6;
+                            color: #888;
+                        }
+
+                        .data-table {
+                            margin-top: 30px;
+                            text-align: left;
+                            background: #111;
+                            padding: 20px;
+                            border-left: 3px solid #666;
+                            font-family: 'Courier New', monospace;
+                        }
+
+                        .label {
+                            color: #555;
+                            font-weight: bold;
+                        }
+
+                        .value {
+                            color: #ddd;
+                        }
+                    </style>
+                </head>
+
+                <body>
+                    <div class="container">
+                        <h1>El Espejo Divino</h1>
+                        <p>"Porque no hay nada oculto que no haya de ser manifestado; ni escondido, que no haya de salir a luz." (Marcos
+                            4:22)</p>
+                        <p>Tu intento ha sido registrado. Tu identidad es conocida.</p>
+
+                        <div class="data-table">
+                            <div><span class="label">IP Detectada:</span> <span class="value"><?php echo esc_html($ip); ?></span></div>
+                            <div><span class="label">Ubicación:</span> <span class="value"><?php echo esc_html($country); ?></span>
+                            </div>
+                            <div><span class="label">User-Agent:</span> <span
+                                    class="value"><?php echo esc_html(substr($ua, 0, 50)) . '...'; ?></span></div>
+                            <div><span class="label">Estado:</span> <span class="value" style="color: #ff4444;">REGISTRADO</span></div>
+                        </div>
+                    </div>
+                </body>
+
+                </html>
+                <?php
             } else {
                 // THEME 2: MR. ROBOT (Cyber Warfare)
                 ?>
-                                <!DOCTYPE html>
-                                <html>
-                                <head>
-                                    <title>🚫 SYSTEM FAILURE</title>
-                                    <style>
-                                        body { background: #000; color: #0f0; font-family: 'Courier New', monospace; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; overflow: hidden; }
-                                        .term { width: 80%; max-width: 800px; }
-                                        h1 { color: #ff0000; font-size: 3em; animation: blink 1s infinite; margin-bottom: 10px; }
-                                        p { margin: 5px 0; font-size: 1.2em; }
-                                        @keyframes blink { 50% { opacity: 0; } }
-                                        .progress { width: 100%; background: #333; height: 20px; margin-top: 20px; border: 1px solid #0f0; }
-                                        .bar { width: 0%; height: 100%; background: #0f0; animation: load 4s forwards; }
-                                        @keyframes load { 100% { width: 100%; } }
-                                    </style>
-                                </head>
-                                <body>
-                                    <div class="term">
-                                        <h1>⚠️ SECURITY BREACH DETECTED</h1>
-                                        <p>> TRACING SOURCE IP... [DONE]</p>
-                                        <p>> TARGET IDENTIFIED: <strong style='color:#ff0000; font-size:1.5em;'><?php echo esc_html($ip); ?> (<?php echo esc_html($country); ?>)</strong></p>
-                                        <p>> INITIATING COUNTER-MEASURES...</p>
-                                        <p>> UPLOADING FORENSIC LOGS TO ADMIN...</p>
-                                        <div class="progress"><div class="bar"></div></div>
-                                        <p id="msg" style="margin-top:20px; color: yellow;"></p>
-                                        <script>
-                                            setTimeout(function(){ document.getElementById('msg').innerText = '> YOU HAVE 5 SECONDS TO DISCONNECT BEFORE ISP REPORT.'; }, 2500);
-                                            setTimeout(function(){ document.body.style.background = 'red'; document.body.style.color = 'black'; }, 4500);
-                                        </script>
-                                    </div>
-                                </body>
-                                </html>
-                                <?php
+                <!DOCTYPE html>
+                <html>
+
+                <head>
+                    <title>🚫 SYSTEM FAILURE</title>
+                    <style>
+                        body {
+                            background: #000;
+                            color: #0f0;
+                            font-family: 'Courier New', monospace;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            height: 100vh;
+                            margin: 0;
+                            overflow: hidden;
+                        }
+
+                        .term {
+                            width: 80%;
+                            max-width: 800px;
+                        }
+
+                        h1 {
+                            color: #ff0000;
+                            font-size: 3em;
+                            animation: blink 1s infinite;
+                            margin-bottom: 10px;
+                        }
+
+                        p {
+                            margin: 5px 0;
+                            font-size: 1.2em;
+                        }
+
+                        @keyframes blink {
+                            50% {
+                                opacity: 0;
+                            }
+                        }
+
+                        .progress {
+                            width: 100%;
+                            background: #333;
+                            height: 20px;
+                            margin-top: 20px;
+                            border: 1px solid #0f0;
+                        }
+
+                        .bar {
+                            width: 0%;
+                            height: 100%;
+                            background: #0f0;
+                            animation: load 4s forwards;
+                        }
+
+                        @keyframes load {
+                            100% {
+                                width: 100%;
+                            }
+                        }
+                    </style>
+                </head>
+
+                <body>
+                    <div class="term">
+                        <h1>⚠️ SECURITY BREACH DETECTED</h1>
+                        <p>> TRACING SOURCE IP... [DONE]</p>
+                        <p>> TARGET IDENTIFIED: <strong style='color:#ff0000; font-size:1.5em;'><?php echo esc_html($ip); ?>
+                                (<?php echo esc_html($country); ?>)</strong></p>
+                        <p>> INITIATING COUNTER-MEASURES...</p>
+                        <p>> UPLOADING FORENSIC LOGS TO ADMIN...</p>
+                        <div class="progress">
+                            <div class="bar"></div>
+                        </div>
+                        <p id="msg" style="margin-top:20px; color: yellow;"></p>
+                        <script>
+                            setTimeout(function () { document.getElementById('msg').innerText = '> YOU HAVE 5 SECONDS TO DISCONNECT BEFORE ISP REPORT.'; }, 2500);
+                            setTimeout(function () { document.body.style.background = 'red'; document.body.style.color = 'black'; }, 4500);
+                        </script>
+                    </div>
+                </body>
+
+                </html>
+                <?php
             }
             die();
         }
