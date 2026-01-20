@@ -276,7 +276,11 @@ if (!$hard_block) {
     <?php else: ?>
 
         <div class="wap-card">
-            <h2>🚨 Intrusion Attempts (Last 50)</h2>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                <h2 style="margin:0; border:none;">🚨 Intrusion Attempts (Last 50)</h2>
+                <a href="?page=wp-api-protection&tab=logs&wap_action=download_csv" class="button button-primary">📊
+                    Descargar Reporte CSV</a>
+            </div>
             <?php
             if (class_exists('WaP_Logger')) {
                 $logs = WaP_Logger::get_logs();

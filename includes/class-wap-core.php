@@ -96,6 +96,10 @@ class WaP_Core
             add_action('admin_menu', array($plugin_admin, 'add_plugin_admin_menu'));
             add_action('admin_enqueue_scripts', array($plugin_admin, 'enqueue_styles'));
             add_action('admin_init', array($plugin_admin, 'register_settings'));
+
+            // Load Dashboard Widget
+            require_once WAP_PLUGIN_DIR . 'includes/class-wap-dashboard.php';
+            new WaP_Dashboard();
         }
     }
 

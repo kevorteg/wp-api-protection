@@ -57,31 +57,41 @@ class WaP_Logger
                 'type' => $type,
                 'reason' => $reason,
                 'request_url' => $url,
-                'request_type' => $type_check // While column might be missing if dbDelta failed, let's keep it clean. Wait, previous schema removed request_type column in favor of url?
-                // Step 341 changed request_type to request_url in SCHEMA.
-                // So I should NOT insert request_type if the column is gone.
-                // But wait, the Admin UI (Step 353) tries to display `$log->request_type`.
-                // "echo '<td>' . $log->request_type . '</td>';"
-                // If I removed the column, that UI code will fail or show empty.
-                // Let's look at Step 353 UI code again.
-                // "echo '<td>' . $log->request_type . '</td>';"
-                // BUT Step 341 schema REPLACE `request_type` with `request_url`.
-                // SO `request_type` column DOES NOT EXIST in the new schema.
-                // WE HAVE A BUG. The UI expects `request_type` but DB has `request_url`.
-                // Actually, the UI in Step 353 has: 
-                // "echo '<td>' . $log->request_type . '</td>';" is WRONG if column is gone.
-                // BUT wait! In step 358 I updated the UI!
-                // "echo '<td>' . ( isset($log->request_url) ? $log->request_url : $log->request_type ) . '</code></td>';"
-                // And I removed the client type column from the header?
-                // "<thead><tr><th>Time</th><th>IP</th><th>Type</th><th>Target URL</th><th>Reason</th></tr></thead>"
-                // It seems I replaced "Client" column with "Target URL".
-                // So the UI is fine (it shows URL). 
-                // DOES IT SHOW CLIENT TYPE? No.
-                // The logic `get_client_type()` is no longer used for storage?
-                // The `log()` function in Step 341 removed `request_type` from insert.
-                // So I should match that.
+                // 'request_type' => $type_check 
             )
         );
+
+        // --- LÓGICA DE ALERTA ---
+        self::check_attack_threshold();
+    }
+
+    private static function check_attack_threshold()
+    {
+        // 1. Obtener contador actual
+        $attacks = get_transient('wap_attack_counter') ?: 0;
+        $attacks++;
+        set_transient('wap_attack_counter', $attacks, 300); // Expira en 5 minutos
+
+        // 2. Verificar si cruzamos la línea roja (20 ataques)
+        // Usar opción por si queremos configurar esto luego
+        $threshold = get_option('wap_alert_threshold', 20);
+
+        if ($attacks > $threshold) {
+            // Verificar si ya enviamos alerta recientemente (Cooldown de 1 hora)
+            if (!get_transient('wap_alert_cooldown')) {
+
+                $admin_email = get_option('admin_email');
+                $subject = '🚨 ALERTA CRÍTICA: Ataque Masivo en Curso - ' . get_bloginfo('name');
+                $message = "El sistema ha detectado más de $threshold intentos de intrusión en los últimos 5 minutos.\n\n";
+                $message .= "Revise los logs inmediatamente en el panel de WP API Protection.\n";
+                $message .= "Modo de Defensa: ACTIVO.";
+
+                wp_mail($admin_email, $subject, $message);
+
+                // Activar Cooldown para no spamear al admin
+                set_transient('wap_alert_cooldown', true, HOUR_IN_SECONDS);
+            }
+        }
     }
 
     // Helper not needed for storage anymore if we don't store it, 
