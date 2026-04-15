@@ -1,9 +1,8 @@
 === REST API Protection ===
 Contributors: kevorteg
-Donate link: https://example.com/
 Tags: rest api, security, api firewall, rate limit, geo block
 Requires at least: 5.8
-Tested up to: 6.4
+Tested up to: 6.5
 Stable tag: 3.0.0
 Requires PHP: 7.4
 License: GPLv2 or later
