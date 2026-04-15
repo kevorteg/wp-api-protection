@@ -1,69 +1,64 @@
-# 🛡️ WP API Protection
+# WP API Protection
 
-![Version](https://img.shields.io/badge/version-2.0.0-blue.svg?style=flat-square)
+![Version](https://img.shields.io/badge/version-3.0.0-blue.svg?style=flat-square)
 ![WordPress](https://img.shields.io/badge/WordPress-6.0+-21759b.svg?style=flat-square&logo=wordpress&logoColor=white)
-![License](https://img.shields.io/badge/license-GPL--3.0-green.svg?style=flat-square)
+![License](https://img.shields.io/badge/license-GPLv2--or--later-green.svg?style=flat-square)
 
-**WP API Protection** is a professional security plugin designed to protect WordPress REST API endpoints with a hybrid approach: **Hard Blocking** (Whitelist/Roles) and **Biblical Rate Limiting** (Grace Attempts).
-
-> *Originally designed for Christian ministries, now robust enough for any organization valuing ethical security.*
+**WP API Protection** is a professional, multi-layered cybersecurity suite designed specifically to defend WordPress REST API endpoints against scraping, automated exploitation, injection attacks, and unauthorized access.
 
 ---
 
-## ✨ Features
+## Architecture and Features
 
-### 🔒 Layer 1: Hard Protection
-- **IP Whitelist:** Allow specific IPs to bypass all checks.
-- **Role Based Access:** Administrators always have access.
-- **Hard Block Mode:** (Optional) Completely lock down the API for non-whitelisted users (Private API mode).
-- **Anti-Hacking:** prevents user enumeration (`/?author=1`) and hides WP version headers.
+### Layer 1: Firewall and Access Control
+- **Hard Block Status:** (Optional) Deny all REST API traffic by default except for authenticated Administrators and Whitelisted IP addresses.
+- **IP Blacklisting:** Permanently ban known malicious actors. Blacklist rules execute with priority zero before any other logic.
+- **IP Whitelisting:** Bypass all security rules and rate limits for trusted endpoints (e.g., origin servers, development teams, integrations).
+- **Geo-Blocking:** Deny traffic originating from configurable ISO 3166-1 alpha-2 country codes. Lookups are locally cached to maximize performance.
+- **Namespace Blocking:** Hide specific REST namespaces or routes (e.g., `/wp/v2/users` or `/wc/v3`) from public discovery, mitigating data leakage and user enumeration.
+- **Proxy-Aware Resolution:** Ensure accurate threat detection when running behind Cloudflare, Nginx proxies, or load balancers, defeating X-Forwarded-For spoofing.
 
-### ⏳ Layer 2: Grace Rate Limiting
-- **Smart Counting:** Tracks failed attempts by IP.
-- **Grace Attempt:** Warns the user before the final block.
-- **Biblical/Custom Messages:** Returns HTTP 401/403 errors with reflective messages (configurable).
+### Layer 2: Behavioral Defense
+- **Rate Limiting:** Granular, sliding-window rate tracking. Automatically temporarily ban IP addresses that exceed request thresholds.
+- **Security Headers:** Automatically injects strict HTTP response headers into all REST communications (`X-Content-Type-Options: nosniff`, `X-Frame-Options: SAMEORIGIN`, `X-XSS-Protection`, etc.).
+- **Troll Mode:** (Optional) Replaces standard JSON 403 blocks with obfuscated terminal-like browser responses and CLI decoys to frustrate automated scanners and waste threat actor resources.
 
-### 📊 Modern Dashboard
-- **Visual Status:** See active rules and whitelist status at a glance.
-- **Live Logs:** Monitor recent blocks directly from the admin panel.
-- **Easy Config:** No coding required. Manage everything from `Settings > API Protection`.
+### Layer 3: Auditing and Monitoring
+- **Intrusion Dashboards:** Visual metrics on blocked interactions, rate limit violations, and security events.
+- **Detailed Forensic Logs:** Track IP, Request Type (Block, Rate, Geo, NS), Request URL, and User-Agent.
+- **Data Export:** Secure, nonce-protected CSV export for external Security Information and Event Management (SIEM) ingestion.
 
 ---
 
-## 🚀 Installation
+## Installation
 
 ### Option 1: Composer (Recommended)
 ```bash
 composer require kevorteg/wp-api-protection
 ```
 
-### Option 2: Manual Zip
+### Option 2: Manual
 1. Download the latest release (`wp-api-protection.zip`).
-2. Upload to your WordPress via **Plugins > Add New > Upload**.
-3. Activate the plugin.
-4. Go to **Settings > API Protection** to configure your Whitelist and Messages.
+2. Upload the uncompressed directory to `/wp-content/plugins/wp-api-protection/`.
+3. Activate the plugin through the WordPress Administration interface.
+4. Navigate to **API Protection** in the main sidebar to configure firewall policies.
 
 ---
 
-## ⚙️ Configuration
+## Operations Guide
 
-| Setting | Description | Recommended |
+| Component | Default | Configuration Context |
 | :--- | :--- | :--- |
-| **Hard Block Mode** | Restricts API to Whitelist/Admins only. | `Files` (Public) or `True` (Private Intranet) |
-| **Whitelist IPs** | List of trusted IPs (Server, Devs). | Your Office IP |
-| **Rate Limit** | Max attempts before temp block. | `5` |
+| **Hard Block Mode** | Enabled | Disable if Public REST access is required for unauthenticated operations. |
+| **Security Headers** | Enabled | Recommended to leave enabled for baseline security. |
+| **Rate Limiter** | 30 requests / 60s | Adjust based on normal web application consumption. |
+| **Block Duration** | 3600 seconds | Penalty duration for rate limit violations. |
+| **Alert Threshold** | 20 triggers / 5 min | Threshold for alerting the site administrator via email. |
 
 ---
-# 🛡️ WP API Protection
 
-[![Download Zip](https://img.shields.io/badge/Download-v1.0-blue?style=for-the-badge&logo=wordpress)](https://github.com/kevorteg/wp-api-protection/releases/tag/v1.0.0)
+## Contributing
 
-**Un plugin de seguridad ligero para blindar la REST API de WordPress.**
-...
+This project is released open source under the GPLv2 (or later) license. Security patches, pull requests, and vulnerability disclosures are welcome via GitHub.
 
-## 🤝 Contributing
-
-This project is open source. Feel free to submit Pull Requests or open Issues on GitHub.
-
-**License:** GPLv3  
 **Authors:** Kevin Ortega
