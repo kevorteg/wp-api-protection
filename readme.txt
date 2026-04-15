@@ -1,4 +1,4 @@
-=== WP API Protection ===
+=== REST API Protection ===
 Contributors: kevorteg
 Donate link: https://example.com/
 Tags: rest api, security, api firewall, rate limit, geo block
@@ -13,7 +13,7 @@ Professional multi-layer security suite for the WordPress REST API. Firewall, ra
 
 == Description ==
 
-**WP API Protection** is a comprehensive, lightweight security plugin designed specifically to lock down and monitor your WordPress REST API. 
+**REST API Protection** is a comprehensive, lightweight security plugin designed specifically to lock down and monitor your WordPress REST API. 
 
 As the REST API is increasingly targeted by automated scanners, scrapers, and malicious bots, this plugin acts as a dedicated application firewall to ensure that your endpoints are protected.
 

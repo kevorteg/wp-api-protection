@@ -16,7 +16,7 @@ class WaP_Admin {
 	 */
 	public function add_plugin_admin_menu() {
 		add_menu_page(
-			__( 'WP API Protection', 'wp-api-protection' ),
+			__( 'REST API Protection', 'wp-api-protection' ),
 			__( 'API Protection', 'wp-api-protection' ),
 			'manage_options',
 			'wp-api-protection',

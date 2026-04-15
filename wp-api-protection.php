@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: WP API Protection
+ * Plugin Name: REST API Protection
  * Description: Professional multi-layer security suite for the WordPress REST API. Firewall, rate limiting, geo-blocking, IP blacklist/whitelist, namespace blocking, and security headers.
  * Version:     3.0.0
  * Author:      Kevin Ortega

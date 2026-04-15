@@ -1,10 +1,10 @@
-# WP API Protection
+# REST API Protection
 
 ![Version](https://img.shields.io/badge/version-3.0.0-blue.svg?style=flat-square)
 ![WordPress](https://img.shields.io/badge/WordPress-6.0+-21759b.svg?style=flat-square&logo=wordpress&logoColor=white)
 ![License](https://img.shields.io/badge/license-GPLv2--or--later-green.svg?style=flat-square)
 
-**WP API Protection** is a professional, multi-layered cybersecurity suite designed specifically to defend WordPress REST API endpoints against scraping, automated exploitation, injection attacks, and unauthorized access.
+**REST API Protection** is a professional, multi-layered cybersecurity suite designed specifically to defend WordPress REST API endpoints against scraping, automated exploitation, injection attacks, and unauthorized access.
 
 ---
 
