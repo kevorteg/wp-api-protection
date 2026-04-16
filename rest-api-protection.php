@@ -4,7 +4,10 @@
  * Description: Professional multi-layer security suite for the WordPress REST API. Firewall, rate limiting, geo-blocking, IP blacklist/whitelist, namespace blocking, and security headers.
  * Version:     3.0.0
  * Author:      Kevin Ortega
+ * Author URI:  https://github.com/kevorteg
+ * Plugin URI:  https://github.com/kevorteg/wp-api-protection
  * Text Domain: rest-api-protection
+ * Domain Path: /languages
  * Requires PHP: 7.4
  * License:     GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html

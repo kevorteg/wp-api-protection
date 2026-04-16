@@ -1,0 +1,5 @@
+landing/frontend/node_modules/
+landing/frontend/dist/
+.DS_Store
+
+*.zip

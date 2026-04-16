@@ -15,7 +15,7 @@ if ( ! current_user_can( 'manage_options' ) ) {
 }
 
 // ── Input validation ──────────────────────────────────────────────────────────
-$allowed_tabs = array( 'settings', 'logs' );
+$allowed_tabs = array( 'settings', 'logs', 'about' );
 $active_tab   = ( isset( $_GET['tab'] ) && in_array( sanitize_key( $_GET['tab'] ), $allowed_tabs, true ) )
 	? sanitize_key( $_GET['tab'] )
 	: 'settings';
@@ -694,6 +694,13 @@ $logs_cleared = ( isset( $_GET['wap_cleared'] ) && '1' === $_GET['wap_cleared'] 
 			   href="<?php echo esc_url( admin_url( 'admin.php?page=wp-api-protection&tab=logs' ) ); ?>">
 				<i class="nav-icon dashicons dashicons-list-view"></i> Intrusion Logs
 			</a>
+
+			<div class="wap-nav-section" style="margin-top:8px">Info</div>
+
+			<a class="wap-nav-item<?php echo 'about' === $active_tab ? ' is-active' : ''; ?>"
+			   href="<?php echo esc_url( admin_url( 'admin.php?page=wp-api-protection&tab=about' ) ); ?>">
+				<i class="nav-icon dashicons dashicons-heart"></i> Open Source
+			</a>
 		</nav>
 	</aside>
 
@@ -792,6 +799,32 @@ $logs_cleared = ( isset( $_GET['wap_cleared'] ) && '1' === $_GET['wap_cleared'] 
 				The watchmen are silent. All systems nominal.
 			</div>
 			<?php endif; ?>
+			</div>
+		</div>
+
+		<?php elseif ( 'about' === $active_tab ) : ?>
+
+		<!-- ═══════════════════════════════════════════════════════════════
+			 ABOUT VIEW
+		════════════════════════════════════════════════════════════════ -->
+		<div class="wap-page-header">
+			<div>
+				<h1 class="wap-page-title">Open Source Philosophy</h1>
+				<p class="wap-page-sub">Free, transparent, and built for the community.</p>
+			</div>
+		</div>
+
+		<div class="wap-card">
+			<div class="wap-card-body" style="font-size:14px; line-height:1.6; color:var(--clr-text)">
+				<h3 style="margin-top:0">Licencia GPLv2</h3>
+				<p>REST API Protection es un proyecto de código abierto publicado bajo la licencia GPLv2 (o superior). Esto garantiza que siempre será libre para estudiar, modificar y distribuir.</p>
+				
+				<h3 style="margin-top:24px">Contribuciones y Código Fuente</h3>
+				<p>El código fuente completo de este plugin está alojado en GitHub. ¡Las contribuciones, reportes de bugs (issues) y pull requests son bienvenidos!</p>
+				<p style="margin-top:16px"><a href="https://github.com/kevorteg/wp-api-protection" target="_blank" class="wap-btn wap-btn--primary">Ver Repo en GitHub</a></p>
+				
+				<h3 style="margin-top:24px">Sitio Oficial</h3>
+				<p>El sitio web oficial te proporciona acceso a toda la documentación, guías de usuario y las últimas novedades acerca de la seguridad del ecosistema REST.</p>
 			</div>
 		</div>
 

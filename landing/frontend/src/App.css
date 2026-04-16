@@ -1,0 +1,259 @@
+/* ... existing rules ... */
+
+/* Navbar Extras */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background-color: var(--nav-bg);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* To push items to sides */
+  padding: 0 2rem;
+  z-index: 40;
+}
+
+.nav-brand {
+  font-weight: 700;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-brand span {
+  color: var(--brand-purple);
+}
+
+.nav-socials {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.social-link {
+  color: var(--text-secondary);
+  transition: color 0.25s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-link:hover {
+  color: var(--text-primary);
+}
+
+.social-link.github:hover {
+  color: #fff; /* standard github hovers wait, user said "el icon de git oficial" */
+}
+
+.social-link svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+/* Rest of the existing CSS... */
+.hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 120px 2rem 4rem;
+  min-height: calc(100vh - 64px);
+  gap: 4rem;
+}
+
+.hero-content {
+  flex: 1;
+  max-width: 600px;
+}
+
+.hero-graphic {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.hero-graphic::before {
+  content: '';
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: var(--brand-purple);
+  filter: blur(150px);
+  opacity: 0.3;
+  z-index: 0;
+  border-radius: 50%;
+}
+
+.hero-graphic img {
+  max-width: 100%;
+  height: auto;
+  z-index: 1;
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5));
+}
+
+.hero-tagline {
+  font-size: 4.5rem;
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.04em;
+  background: -webkit-linear-gradient(315deg, var(--text-primary) 25%, #646cff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-tagline .highlight {
+  background: -webkit-linear-gradient(315deg, var(--brand-blue) 25%, var(--brand-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-desc {
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 1.5rem;
+  border-radius: 24px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: background-color 0.25s, color 0.25s, border-color 0.25s;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.btn-primary {
+  background-color: var(--brand-purple);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: #a62ee1;
+}
+
+.btn-secondary {
+  background-color: var(--button-bg);
+  border-color: var(--button-border);
+  color: var(--text-primary);
+}
+
+.btn-secondary:hover {
+  background-color: var(--button-hover);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.last-visit-badge {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-top: 3rem;
+  padding: 0.75rem 1.25rem;
+  background-color: var(--button-bg);
+  border: 1px solid var(--button-border);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  max-width: fit-content;
+}
+
+.badge-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.badge-row span {
+  color: var(--text-primary);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.visit-time {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-left: 1rem; /* align under the text */
+  margin-top: 0.2rem;
+}
+
+.ping {
+  position: relative;
+  display: flex;
+  width: 8px;
+  height: 8px;
+}
+
+.ping::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--brand-blue);
+  border-radius: 50%;
+  opacity: 0.75;
+  animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.ping::after {
+  content: "";
+  position: relative;
+  width: 8px;
+  height: 8px;
+  background-color: var(--brand-blue);
+  border-radius: 50%;
+}
+
+@keyframes ping {
+  75%, 100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 960px) {
+  .hero-container {
+    flex-direction: column;
+    text-align: center;
+    padding-top: 100px;
+  }
+  
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .hero-tagline {
+    font-size: 3.5rem;
+  }
+  
+  .hero-actions {
+    justify-content: center;
+  }
+}
